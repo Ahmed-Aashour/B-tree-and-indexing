@@ -2,6 +2,8 @@ package org.dslabs;
 
 public class BTree<K extends Comparable<K>, V> implements IBTree<K, V>, Comparable<K>{
 
+    private BTreeNode<K, V> root;
+
     @Override
     public int getMinimumDegree() {
         // TODO Auto-generated method stub
@@ -10,8 +12,7 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V>, Comparab
 
     @Override
     public IBTreeNode<K, V> getRoot() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.root;
     }
 
     @Override

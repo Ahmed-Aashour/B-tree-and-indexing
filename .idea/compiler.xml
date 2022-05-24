@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="btree" />
+        <module name="B-tree-and-indexing" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="B-tree-and-indexing" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
