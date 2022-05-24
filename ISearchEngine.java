@@ -1,5 +1,3 @@
-package eg.edu.alexu.csd.filestructure.btree;
-
 import java.util.List;
 
 public interface ISearchEngine {

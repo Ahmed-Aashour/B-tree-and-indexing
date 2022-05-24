@@ -1,5 +1,3 @@
-package eg.edu.alexu.csd.filestructure.btree;
-
 public interface ISearchResult {
 
 	/**
