@@ -1,9 +1,21 @@
 package org.dslabs;
 
+
 public class BTree<K extends Comparable<K>, V> implements IBTree<K, V>, Comparable<K>{
 
     private BTreeNode<K, V> root;
+    private final int minDegree;
+    private final int maxDegree;
+    private final int minNumOfKeys;
+    private final int maxNumOfKeys;
 
+    public BTree(int minDeg){
+        this.minDegree    = minDeg;
+        this.maxDegree    = minDeg * 2;
+        this.minNumOfKeys = minDeg - 1;
+        this.maxNumOfKeys = minDeg * 2 - 1;
+        this.root = null;
+    }
     @Override
     public int getMinimumDegree() {
         // TODO Auto-generated method stub
