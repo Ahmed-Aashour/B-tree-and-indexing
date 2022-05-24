@@ -1,3 +1,5 @@
+package org.dslabs;
+
 public class SearchResult implements ISearchResult {
 
     @Override
@@ -9,7 +11,7 @@ public class SearchResult implements ISearchResult {
     @Override
     public void setId(String id) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -21,7 +23,7 @@ public class SearchResult implements ISearchResult {
     @Override
     public void setRank(int rank) {
         // TODO Auto-generated method stub
-        
+
     }
-    
+
 }

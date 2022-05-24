@@ -1,23 +1,25 @@
+package org.dslabs;
+
 import java.util.List;
 
-public class SearchEngine implements ISearchEngine{
+public class SearchEngine implements ISearchEngine {
 
     @Override
     public void indexWebPage(String filePath) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void indexDirectory(String directoryPath) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void deleteWebPage(String filePath) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -31,5 +33,5 @@ public class SearchEngine implements ISearchEngine{
         // TODO Auto-generated method stub
         return null;
     }
-    
+
 }
