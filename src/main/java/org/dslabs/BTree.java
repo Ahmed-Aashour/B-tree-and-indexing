@@ -27,6 +27,10 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V>, Comparab
         return this.root;
     }
 
+    public void serRoot(BTreeNode<K,V> r) {
+        this.root = r;
+    }
+
     @Override
     public void insert(K key, V value) {
         // TODO Auto-generated method stub
@@ -35,8 +39,24 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V>, Comparab
 
     @Override
     public V search(K key) {
-        // TODO Auto-generated method stub
+        if (helpSearch(key,root)) System.out.println("found");else System.out.println("Notfound");
         return null;
+    }
+    private boolean helpSearch(K key, BTreeNode<K,V> root){
+        int pointer = 0;
+        if (root == null) return false;
+        for (int i = 0; i< root.getKeys().size();i++){
+            if (key.compareTo((K) root.getKeys().get(i)) == 0){
+                return true;
+            }
+            else if (key.compareTo((K) root.getKeys().get(i)) < 0){
+                BTreeNode para =  root.isLeaf() ? null : (BTreeNode) root.getChildren().get(pointer);
+                return helpSearch(key, para );
+            }
+            else pointer++;
+        }
+        BTreeNode para = root.isLeaf() ? null : (BTreeNode) root.getChildren().get(pointer);
+        return helpSearch(key, para);
     }
 
     @Override
