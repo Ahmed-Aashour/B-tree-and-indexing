@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Inserting Implementation">
+    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Insertion Optimization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchResult.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653527926440</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Insertion Optimization">
+      <created>1653571259476</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653571259476</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -111,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Inserting Implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inserting Implementation" />
+    <MESSAGE value="Insertion Optimization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Insertion Optimization" />
   </component>
 </project>
