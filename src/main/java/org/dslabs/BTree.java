@@ -11,6 +11,8 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
     private final int maxDegree;
     private final int minNumOfKeys;
     private final int maxNumOfKeys;
+
+    private final int middleIndex;
     private IBTreeNode<K, V> root;
 
     public BTree(int minDeg) {
@@ -18,6 +20,7 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
         this.maxDegree = minDeg * 2;
         this.minNumOfKeys = minDeg - 1;
         this.maxNumOfKeys = minDeg * 2 - 1;
+        this.middleIndex = (this.maxNumOfKeys + 1) / 2;
         this.root = new BTreeNode<K, V>(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(Collections.nCopies(60, null)), true, 0);
     }
 
@@ -64,36 +67,29 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
         IBTreeNode<K, V> left = null;
         IBTreeNode<K, V> right = null;
         for (IBTreeNode<K, V> ancestor : ancestors) {
+            z.getChildren().set(i, left);
+            z.getChildren().add(i + 1, right);
             if (z.getNumOfKeys() < this.maxNumOfKeys) {
                 z.getKeys().add(i, keyToPushIn);
                 z.getValues().add(i, valueToPushIn);
-                if (left != null) {
-                    z.getChildren().set(i, left);
-                    z.getChildren().add(i + 1, right);
-                }
                 z.setNumOfKeys(z.getNumOfKeys() + 1);
                 keyToPushIn = null;
-                valueToPushIn = null;
                 break;
             } else {
-                int middleIndex = (this.maxNumOfKeys + 1) / 2;
                 z.getKeys().add(i, keyToPushIn);
                 z.getValues().add(i, valueToPushIn);
-                if (left != null) {
-                    z.getChildren().set(i, left);
-                    z.getChildren().add(i + 1, right);
-                }
                 keyToPushIn = z.getKeys().remove(middleIndex);
                 valueToPushIn = z.getValues().remove(middleIndex);
                 List<K> leftKeys = new ArrayList<>(z.getKeys().subList(0, middleIndex));
                 List<V> leftValues = new ArrayList<>(z.getValues().subList(0, middleIndex));
                 List<IBTreeNode<K, V>> leftChildren =
-                        z.isLeaf() ? new ArrayList<>(Collections.nCopies(60, null))
+                        z.isLeaf() ? new ArrayList<>(Collections.nCopies(this.maxNumOfKeys + 1, null))
                                 : new ArrayList<>(z.getChildren().subList(0, middleIndex + 1));
                 List<K> rightKeys = new ArrayList<>(z.getKeys().subList(middleIndex, z.getKeys().size()));
                 List<V> rightValues = new ArrayList<>(z.getValues().subList(middleIndex, z.getValues().size()));
-                List<IBTreeNode<K, V>> rightChildren = z.isLeaf() ? new ArrayList<>(Collections.nCopies(60, null))
-                        : new ArrayList<>(z.getChildren().subList(middleIndex + 1, z.getChildren().size()));
+                List<IBTreeNode<K, V>> rightChildren =
+                        z.isLeaf() ? new ArrayList<>(Collections.nCopies(this.maxNumOfKeys + 1, null))
+                            : new ArrayList<>(z.getChildren().subList(middleIndex + 1, z.getChildren().size()));
                 left = new BTreeNode<>(leftKeys, leftValues, leftChildren, z.isLeaf(), leftKeys.size());
                 right = new BTreeNode<>(rightKeys, rightValues, rightChildren, z.isLeaf(), rightKeys.size());
                 z = ancestor;
@@ -107,7 +103,6 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
             this.root.getChildren().add(left);
             this.root.getChildren().add(right);
         }
-        System.out.println(this.root.getKeys() + "\n---------------");
     }
 
     @Override
