@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Deletion Fixed">
+    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Deletion completed &amp; Tests added(in test directory)">
+      <change afterPath="$PROJECT_DIR$/src/test/java/BTreeForTesting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +17,13 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -112,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653645771570</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Deletion completed &amp; Tests added(in test directory)">
+      <created>1653661598755</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653661598755</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -142,7 +157,8 @@
     <MESSAGE value="Inserting Implementation" />
     <MESSAGE value="Insertion Optimization" />
     <MESSAGE value="Deletion Fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deletion Fixed" />
+    <MESSAGE value="Deletion completed &amp; Tests added(in test directory)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deletion completed &amp; Tests added(in test directory)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/B_tree_and_indexing$Main.ic" NAME="Main Coverage Results" MODIFIED="1653589440813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
