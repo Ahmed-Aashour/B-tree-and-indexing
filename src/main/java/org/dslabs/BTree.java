@@ -311,10 +311,6 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
                                 this.root = rightSibling;
                         }
                     }
-                    //if root has no children then it's a leaf node
-                    if (node.getChildren().size() == 0) {
-                        this.root.setLeaf(true);
-                    }
                     nkeys--; //Decrement the size-counter after deletion
                 }
             }

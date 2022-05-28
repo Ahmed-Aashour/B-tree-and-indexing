@@ -201,10 +201,6 @@ public class BTreeForTesting<K extends Comparable<K>, V> extends BTree<K, V> {
                                 this.root = rightSibling;
                         }
                     }
-                    //if root has no children then it's a leaf node
-                    if (node.getChildren().size() == 0) {
-                        this.root.setLeaf(true);
-                    }
                     nkeys--; //Decrement the size-counter after deletion
                 }
             }

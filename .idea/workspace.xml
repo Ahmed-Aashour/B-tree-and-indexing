@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Adding Search Engine Test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/BTreeForTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BTreeForTesting.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
