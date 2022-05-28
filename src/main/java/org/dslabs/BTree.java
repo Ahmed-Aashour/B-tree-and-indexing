@@ -6,7 +6,6 @@ import java.util.*;
 public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
 
     private final int minDegree;
-    private final int maxDegree;
     protected final int minNumOfKeys;
     protected final int maxNumOfKeys;
 
@@ -15,7 +14,6 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
 
     public BTree(int minDeg) {
         this.minDegree = minDeg;
-        this.maxDegree = minDeg * 2;
         this.minNumOfKeys = minDeg - 1;
         this.maxNumOfKeys = minDeg * 2 - 1;
         this.middleIndex = (this.maxNumOfKeys + 1) / 2;
@@ -40,8 +38,11 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
         while (!x.isLeaf()) {
             int childIndex = 0;
             for (K k : x.getKeys()) {
-                if (key.compareTo(k) < 0) {
+                int compResult = key.compareTo(k);
+                if (compResult < 0) {
                     break;
+                } else if (compResult == 0) {
+                    return;
                 }
                 childIndex++;
             }

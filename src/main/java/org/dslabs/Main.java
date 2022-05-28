@@ -11,6 +11,5 @@ public class Main {
         for (ISearchResult searchResult : searchResults) {
             System.out.println(searchResult.getId() + " " + searchResult.getRank());
         }
-
     }
 }
