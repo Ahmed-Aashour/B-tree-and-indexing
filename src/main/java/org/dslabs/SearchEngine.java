@@ -1,6 +1,7 @@
 package org.dslabs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import org.w3c.dom.*;
@@ -20,11 +21,11 @@ public class SearchEngine implements ISearchEngine {
             Document doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
             NodeList docs = doc.getElementsByTagName("doc");
-            for (int temp = 1; temp < docs.getLength(); temp++) {
+            for (int temp = 0; temp < docs.getLength(); temp++) {
                 int docId = Integer.parseInt(docs.item(temp).getAttributes().getNamedItem("id").getNodeValue());
-                String[] words = docs.item(temp).getTextContent().split("\\s+");
-                for (String word : words) {
-                    HashMap<Integer, Integer> docFreq = this.index.search(word);
+                String[] words = docs.item(temp).getTextContent().toLowerCase().split("\\s+");
+                for (int i = 1; i < words.length; i++) {
+                    HashMap<Integer, Integer> docFreq = this.index.search(words[i]);
                     if (docFreq != null) {
                         if (docFreq.containsKey(docId)) {
                             docFreq.put(docId, docFreq.get(docId) + 1);
@@ -34,7 +35,7 @@ public class SearchEngine implements ISearchEngine {
                     } else {
                         docFreq = new HashMap<>();
                         docFreq.put(docId, 1);
-                        this.index.insert(word, docFreq);
+                        this.index.insert(words[i], docFreq);
                     }
                 }
             }
@@ -69,7 +70,7 @@ public class SearchEngine implements ISearchEngine {
             NodeList docs = doc.getElementsByTagName("doc");
             for (int temp = 1; temp < docs.getLength(); temp++) {
                 int docId = Integer.parseInt(docs.item(temp).getAttributes().getNamedItem("id").getNodeValue());
-                String[] words = docs.item(temp).getTextContent().split("\\s+");
+                String[] words = docs.item(temp).getTextContent().toLowerCase().split("\\s+");
                 for (String word : words) {
                     HashMap<Integer, Integer> docFreq = this.index.search(word);
                     if (docFreq != null) {
@@ -88,7 +89,7 @@ public class SearchEngine implements ISearchEngine {
     @Override
     public List<ISearchResult> searchByWordWithRanking(String word) {
         List<ISearchResult> results = new ArrayList<>();
-        HashMap<Integer, Integer> docFreq = this.index.search(word);
+        HashMap<Integer, Integer> docFreq = this.index.search(word.toLowerCase());
         if (docFreq != null) {
             for (Integer docId : docFreq.keySet()) {
                 SearchResult result = new SearchResult();
@@ -103,7 +104,7 @@ public class SearchEngine implements ISearchEngine {
     @Override
     public List<ISearchResult> searchByMultipleWordWithRanking(String sentence) {
         List<ISearchResult> results = new ArrayList<>();
-        String[] words = sentence.split("\\s+");
+        String[] words = sentence.toLowerCase().split("\\s+");
         HashMap<Integer, Integer> docFreq = new HashMap<>();
         for (String word : words) {
             HashMap<Integer, Integer> temp = this.index.search(word);
