@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Prevent Repeated Insertions">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Benchmark.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchEngine.java" afterDir="false" />
+    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Formatting Code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Benchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Benchmark.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +61,14 @@
       <recent name="C:\Users\mory\B-tree-and-indexing\src\test\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Tests">
+  <component name="RunManager" selected="Application.Benchmark">
+    <configuration name="Benchmark" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Benchmark" />
+      <module name="B-tree-and-indexing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.dslabs.Main" />
       <module name="B-tree-and-indexing" />
@@ -83,6 +91,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Benchmark" />
         <item itemvalue="Application.Tests" />
         <item itemvalue="Application.Main" />
       </list>
@@ -125,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653661598755</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Fixing Multiple Words Ranking">
+      <created>1653760656215</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653760656215</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -156,7 +172,9 @@
     <MESSAGE value="Insertion Optimization" />
     <MESSAGE value="Deletion Fixed" />
     <MESSAGE value="Deletion completed &amp; Tests added(in test directory)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deletion completed &amp; Tests added(in test directory)" />
+    <MESSAGE value="Fixing Multiple Words Ranking" />
+    <MESSAGE value="Formatting Code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formatting Code" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/B_tree_and_indexing$Main.ic" NAME="Main Coverage Results" MODIFIED="1653589440813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

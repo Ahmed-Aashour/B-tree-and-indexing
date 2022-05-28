@@ -5,10 +5,9 @@ import java.util.*;
 
 public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
 
-    private final int minDegree;
     protected final int minNumOfKeys;
     protected final int maxNumOfKeys;
-
+    private final int minDegree;
     private final int middleIndex;
     protected IBTreeNode<K, V> root;
 
@@ -88,7 +87,7 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
                 List<V> rightValues = new ArrayList<>(z.getValues().subList(middleIndex, z.getValues().size()));
                 List<IBTreeNode<K, V>> rightChildren =
                         z.isLeaf() ? new ArrayList<>(Collections.nCopies(this.maxNumOfKeys + 1, null))
-                            : new ArrayList<>(z.getChildren().subList(middleIndex + 1, z.getChildren().size()));
+                                : new ArrayList<>(z.getChildren().subList(middleIndex + 1, z.getChildren().size()));
                 left = new BTreeNode<>(leftKeys, leftValues, leftChildren, z.isLeaf(), leftKeys.size());
                 right = new BTreeNode<>(rightKeys, rightValues, rightChildren, z.isLeaf(), rightKeys.size());
                 z = ancestor;
@@ -126,32 +125,32 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
 
     @Override
     public boolean delete(K key) {
-        if(search(key) == null)
+        if (search(key) == null)
             return false;
-        else{
+        else {
             _delete(this.root, key);
             return true;
         }
     }
 
-    protected void _delete(IBTreeNode<K, V> node, K key){
+    protected void _delete(IBTreeNode<K, V> node, K key) {
         //if key found :)
-        if (node != null && node.getKeys().contains(key)){
+        if (node != null && node.getKeys().contains(key)) {
             //Internal node deletion ----> Case II
-            if(!node.isLeaf()){
+            if (!node.isLeaf()) {
                 int index = node.getKeys().indexOf(key);
-                IBTreeNode<K, V> leftChild  = node.getChildren().get(index);
-                IBTreeNode<K, V> rightChild = node.getChildren().get(index+1);
+                IBTreeNode<K, V> leftChild = node.getChildren().get(index);
+                IBTreeNode<K, V> rightChild = node.getChildren().get(index + 1);
                 //Inorder predecessor - left child
-                if(leftChild.getNumOfKeys() > this.minNumOfKeys && leftChild.isLeaf() || !leftChild.isLeaf()){
+                if (leftChild.getNumOfKeys() > this.minNumOfKeys && leftChild.isLeaf() || !leftChild.isLeaf()) {
                     IBTreeNode<K, V> predecessorNode = Predecessor(leftChild);
-                    int last = predecessorNode.getNumOfKeys()-1; //Predecessor index
+                    int last = predecessorNode.getNumOfKeys() - 1; //Predecessor index
                     node.getKeys().set(index, predecessorNode.getKeys().get(last)); //set the predecessor
                     node.getValues().set(index, predecessorNode.getValues().get(last));
                     _delete(leftChild, predecessorNode.getKeys().get(last)); //Recursively _delete the Predecessor
                 }
                 //Inorder successor - right child
-                else if(rightChild.getNumOfKeys() > this.minNumOfKeys && rightChild.isLeaf() || !rightChild.isLeaf()){
+                else if (rightChild.getNumOfKeys() > this.minNumOfKeys && rightChild.isLeaf() || !rightChild.isLeaf()) {
                     IBTreeNode<K, V> successorNode = Successor(rightChild);
                     node.getKeys().set(index, successorNode.getKeys().get(0)); //set the successor
                     node.getValues().set(index, successorNode.getValues().get(0));
@@ -162,41 +161,41 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
                     node.getValues().remove(index); //remove value & key
                     node.getKeys().remove(index);
                     node.setNumOfKeys(node.getNumOfKeys() - 1);
-                    for(int i = 0; i < rightChild.getNumOfKeys(); i++) { //append to left child
+                    for (int i = 0; i < rightChild.getNumOfKeys(); i++) { //append to left child
                         leftChild.getKeys().add(rightChild.getKeys().get(i));
                         leftChild.getValues().add(rightChild.getValues().get(i));
-                        if(!leftChild.isLeaf()){ //not leaf then append children
+                        if (!leftChild.isLeaf()) { //not leaf then append children
                             leftChild.getChildren().add(rightChild.getChildren().get(i));
-                            if(i == rightChild.getNumOfKeys() - 1)
-                                leftChild.getChildren().add(rightChild.getChildren().get(i+1));
+                            if (i == rightChild.getNumOfKeys() - 1)
+                                leftChild.getChildren().add(rightChild.getChildren().get(i + 1));
                         }
                     }
                     leftChild.setNumOfKeys(leftChild.getNumOfKeys() + rightChild.getNumOfKeys());
                     node.getChildren().remove(rightChild); //remove right child
-                    if(node == this.root && node.getNumOfKeys() == 0){
+                    if (node == this.root && node.getNumOfKeys() == 0) {
                         this.root = leftChild;
                     }
                 }
             }
             //leaf node deletion ----> Case I
-            else{
+            else {
                 node.getValues().remove(node.getKeys().indexOf(key)); //remove value & key
                 node.getKeys().remove(key);
                 node.setNumOfKeys(node.getNumOfKeys() - 1);
             }
         }
         //if key not found :(
-        else if(node != null){
+        else if (node != null) {
             List<K> keys = node.getKeys();
             int nkeys = node.getNumOfKeys();
-            for (int i = 0; i <= nkeys; i++){
+            for (int i = 0; i <= nkeys; i++) {
                 IBTreeNode<K, V> child = new BTreeNode<>(null, null, null, false, this.maxNumOfKeys);
-                if(i < nkeys && key.compareTo(keys.get(i)) < 0 || i == nkeys){ //Search for the key recursively to be deleted
+                if (i < nkeys && key.compareTo(keys.get(i)) < 0 || i == nkeys) { //Search for the key recursively to be deleted
                     child = node.getChildren().get(i);
                     _delete(child, key);
                 }
                 //if deletion happens && it violates the B-tree property
-                if(child != null && child.getNumOfKeys() < minNumOfKeys) {
+                if (child != null && child.getNumOfKeys() < minNumOfKeys) {
                     //Leaf node deletion -----> Case I
                     if (child.isLeaf()) {
                         /* borrow from left/right sibling */
@@ -235,13 +234,13 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
                             node.getChildren().remove(i);
                             if (node == this.root && node.getNumOfKeys() == 0) //if root become empty
                                 this.root = leftSibling;
-                        //right merging
+                            //right merging
                         } else {
                             IBTreeNode<K, V> rightSibling = node.getChildren().get(i + 1);
                             rightSibling.getKeys().add(0, node.getKeys().remove(i));
                             rightSibling.getValues().add(0, node.getValues().remove(i));
                             node.setNumOfKeys(node.getNumOfKeys() - 1);
-                            for (int j = child.getNumOfKeys()-1; j >= 0 ; j--) {
+                            for (int j = child.getNumOfKeys() - 1; j >= 0; j--) {
                                 rightSibling.getKeys().add(0, child.getKeys().get(j));
                                 rightSibling.getValues().add(0, child.getValues().get(j));
                             }
@@ -250,7 +249,7 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
                             if (node == this.root && node.getNumOfKeys() == 0) //if root become empty
                                 this.root = rightSibling;
                         }
-                    //Internal node -----> Case III
+                        //Internal node -----> Case III
                     } else {
                         /* borrow from left/right sibling */
                         //left borrow -> right rotation
@@ -286,14 +285,14 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
                                 leftSibling.getKeys().add(child.getKeys().get(j));
                                 leftSibling.getValues().add(child.getValues().get(j));
                             }
-                            for (int k = 0; k < child.getChildren().size(); k++){ //append child's children to leftSibling's children
+                            for (int k = 0; k < child.getChildren().size(); k++) { //append child's children to leftSibling's children
                                 leftSibling.getChildren().add(child.getChildren().get(k));
                             }
                             leftSibling.setNumOfKeys(leftSibling.getNumOfKeys() + child.getNumOfKeys() + 1); //update numOfKeys of leftSibling
                             node.getChildren().remove(i); //child got removed
                             if (node == this.root && node.getNumOfKeys() == 0) //if root become empty
                                 this.root = leftSibling;
-                        //right merging
+                            //right merging
                         } else {
                             IBTreeNode<K, V> rightSibling = node.getChildren().get(i + 1);
                             rightSibling.getKeys().add(0, node.getKeys().remove(i)); //append a key from parent to rightSibling
@@ -317,48 +316,50 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
         }
     }
 
-    /** <Helps _delete() method>
+    /**
+     * <Helps _delete() method>
      * Finds the predecessor of a given node
+     *
      * @param node: the right-child of the deleted key
      * @return the node that has the predecessor key-value
      */
     protected IBTreeNode<K, V> Successor(IBTreeNode<K, V> node) {
-        if(node.isLeaf()){
+        if (node.isLeaf()) {
             return node;
-        }
-        else{ //go left-most
+        } else { //go left-most
             return Successor(node.getChildren().get(0));
         }
     }
 
-    /** <Helps _delete() method>
+    /**
+     * <Helps _delete() method>
      * Finds the successor node of a given node
+     *
      * @param node: the left-child of the deleted key
      * @return the node that has the successor key-value
      */
     protected IBTreeNode<K, V> Predecessor(IBTreeNode<K, V> node) {
-        if(node.isLeaf()){
+        if (node.isLeaf()) {
             return node;
-        }
-        else{ //go right-most
+        } else { //go right-most
             return Predecessor(node.getChildren().get(node.getNumOfKeys()));
         }
     }
 
-    /** <Just For Testing>
+    /**
+     * <Just For Testing>
      * prints the keys of the b-tree in an increasing order
      * (i.e., inorder traversal) recursively
+     *
      * @param node: the root of the tree
      */
-    public void inorderBTree(IBTreeNode<K, V> node){
+    public void inorderBTree(IBTreeNode<K, V> node) {
         if (node == this.root) System.out.print("Inorder: ");
-        if (node != null)
-        {
-            for (int i = 0; i < node.getNumOfKeys(); i++)
-            {
+        if (node != null) {
+            for (int i = 0; i < node.getNumOfKeys(); i++) {
                 inorderBTree(node.getChildren().get(i));
                 System.out.print(node.getKeys().get(i) + " ");
-                if (i == node.getNumOfKeys()-1) {
+                if (i == node.getNumOfKeys() - 1) {
                     inorderBTree(node.getChildren().get(i + 1));
                 }
             }
@@ -366,11 +367,13 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
         if (node == this.root) System.out.println();
     }
 
-    /** <Just For Testing>
+    /**
+     * <Just For Testing>
      * Prints the B-tree as BFS (Level Order Traversal) using a Queue
+     *
      * @param node: the root of the tree
      */
-    public void BFS_BTree(IBTreeNode<K, V> node){
+    public void BFS_BTree(IBTreeNode<K, V> node) {
         Queue<IBTreeNode<K, V>> q = new LinkedList<>();
         q.add(node);
         q.add(null);
@@ -378,14 +381,14 @@ public class BTree<K extends Comparable<K>, V> implements IBTree<K, V> {
         System.out.print("Level-" + level + " -> ");
         while (!q.isEmpty()) {
             IBTreeNode<K, V> curr = q.poll();
-            if(curr == null){
-                if(!q.isEmpty()){
+            if (curr == null) {
+                if (!q.isEmpty()) {
                     q.add(null);
                     System.out.println(); //print new line between levels
                     System.out.print("Level-" + (++level) + " -> ");
                 }
             } else {
-                if(curr.getChildren().get(0) != null)
+                if (curr.getChildren().get(0) != null)
                     q.addAll(curr.getChildren());
                 System.out.print(curr.getKeys() + " "); //print node's keys
             }

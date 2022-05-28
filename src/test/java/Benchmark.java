@@ -6,7 +6,7 @@ import java.util.Random;
 public class Benchmark {
     public static void main(String[] args) {
         int samples = 256;
-        int n = 1024;
+        int n = 8192;
         long[] putTimeSamples = new long[samples];
         long[] getTimeSamples = new long[samples];
         long[] removeTimeSamples = new long[samples];
