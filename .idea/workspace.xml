@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Adding Search Engine Test">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/BTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/BTreeForTesting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/BTreeForTesting.java" afterDir="false" />
+    <list default="true" id="0988f2a5-c5fe-449e-a996-82a1cf915a07" name="Changes" comment="Prevent Repeated Insertions">
+      <change afterPath="$PROJECT_DIR$/src/test/java/Benchmark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/dslabs/SearchEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

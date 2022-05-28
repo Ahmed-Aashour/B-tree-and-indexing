@@ -110,7 +110,9 @@ public class SearchEngine implements ISearchEngine {
             if (temp != null) {
                 for (Integer docId : temp.keySet()) {
                     if (docFreq.containsKey(docId)) {
-                        docFreq.put(docId, docFreq.get(docId) + temp.get(docId));
+                        if (docFreq.get(docId) > temp.get(docId)) {
+                            docFreq.put(docId, temp.get(docId));
+                        }
                     } else {
                         docFreq.put(docId, temp.get(docId));
                     }
